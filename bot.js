@@ -2,7 +2,7 @@ const mineflayer = require('mineflayer');
 
 function createBot() {
   const bot = mineflayer.createBot({
-    host: 'adarsh_ver.exaroton.me', // replace with your Aternos server IP
+    host: 'adarsh_ver.exaroton.me:17899', // replace with your Aternos server IP
     port: 17899,                     // replace with your Aternos server port if needed
     username: 'GAY',        // replace with the bot's username
     // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
