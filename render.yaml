@@ -1,0 +1,16 @@
+services:
+  - type: worker
+    name: minecraft-bot
+    env: node
+    plan: starter
+    buildCommand: "npm install"
+    startCommand: "node bot.js"
+    envVars:
+      - key: MINECRAFT_HOST
+        value: MineEarthians.aternos.me
+      - key: MINECRAFT_PORT
+        value: "32203"
+      - key: MINECRAFT_USERNAME
+        value: GAY
+      - key: MINECRAFT_VERSION
+        value: "1.16.1"
