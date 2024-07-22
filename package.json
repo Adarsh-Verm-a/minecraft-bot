@@ -1,13 +1,14 @@
 {
   "name": "minecraft-bot",
   "version": "1.0.0",
+  "description": "A Minecraft bot using mineflayer",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "mineflayer": "^4.20.1"
+    "mineflayer": "^4.20.1",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1" 
+    "express": "^4.17.1"
   }
 }
