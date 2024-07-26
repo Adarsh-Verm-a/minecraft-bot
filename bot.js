@@ -5,7 +5,7 @@ function createBot() {
   const bot = mineflayer.createBot({
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
-    username: 'BehenKaLoda',                  // replace with the bot's username
+    username: 'BehenKaLoda',          // replace with the bot's username
     version: '1.16.5',                // specify the Minecraft version
     // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
   });
@@ -20,7 +20,7 @@ function createBot() {
     setInterval(() => {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
-    }, 60000); // Jump every 60 seconds
+    }, 120000); // Jump every 120 seconds
   });
 
   bot.on('chat', (username, message) => {
@@ -38,6 +38,10 @@ function createBot() {
   bot.on('end', () => {
     console.log('Bot has disconnected. Reconnecting in 30 seconds...');
     setTimeout(createBot, 30000); // Reconnect after 30 seconds
+  });
+
+  bot.on('health', () => {
+    console.log(`Health: ${bot.health}, Food: ${bot.food}`);
   });
 }
 
