@@ -16,11 +16,13 @@ function createBot() {
 
   bot.on('spawn', () => {
     console.log('Bot has spawned in the world.');
-    // Move around to avoid being kicked for inactivity
-    setInterval(() => {
+    // Make the bot jump continuously
+    function keepJumping() {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
-    }, 120000); // Jump every 120 seconds
+      setTimeout(keepJumping, 1000); // Adjust the interval as needed
+    }
+    keepJumping();
   });
 
   bot.on('chat', (username, message) => {
