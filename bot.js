@@ -1,17 +1,21 @@
 const mineflayer = require('mineflayer');
 const express = require('express');
 
+function getRandomUsername() {
+  const names = ['CoolBot', 'FunBot', 'MightyBot', 'StealthBot', 'SpeedyBot', 'PowerBot', 'SmartBot'];
+  return names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random() * 1000);
+}
+
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
-    username: 'BehenKaLoda',          // replace with the bot's username
+    username: getRandomUsername(),    // generate a random bot username
     version: '1.16.5',                // specify the Minecraft version
-    // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
   });
 
   bot.on('login', () => {
-    console.log('Bot has logged in.');
+    console.log('Bot has logged in as ' + bot.username);
   });
 
   bot.on('spawn', () => {
@@ -73,9 +77,13 @@ function createBot() {
     console.error('Error:', err);
   });
 
+  bot.on('kicked', (reason) => {
+    console.log(`Kicked for ${reason}`);
+  });
+
   bot.on('end', () => {
-    console.log('Bot has disconnected. Reconnecting in 30 seconds...');
-    setTimeout(createBot, 30000);
+    console.log('Bot has disconnected. Reconnecting in 30 seconds with a new username...');
+    setTimeout(createBot, 30000); // Reconnect after 30 seconds with a new username
   });
 
   bot.on('health', () => {
