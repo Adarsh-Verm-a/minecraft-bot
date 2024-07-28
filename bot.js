@@ -1,16 +1,13 @@
 const mineflayer = require('mineflayer');
 const express = require('express');
 
-function getRandomUsername() {
-  const names = ['CoolBot', 'FunBot', 'MightyBot', 'StealthBot', 'SpeedyBot', 'PowerBot', 'SmartBot'];
-  return names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random() * 1000);
-}
+
 
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
-    username: getRandomUsername(),    // generate a random bot username
+    username: AcchaBAccha,    // generate a random bot username
     version: '1.16.5',                // specify the Minecraft version
   });
 
