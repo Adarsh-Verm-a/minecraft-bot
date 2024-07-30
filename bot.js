@@ -1,18 +1,17 @@
 const mineflayer = require('mineflayer');
 const express = require('express');
 
-
-
-function createBot() {
+function createBot(username) {
   const bot = mineflayer.createBot({
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
-    username: AcchaBAccha,    // generate a random bot username
+    username: username,               // use the specified username
     version: '1.16.5',                // specify the Minecraft version
+    // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
   });
 
   bot.on('login', () => {
-    console.log('Bot has logged in as ' + bot.username);
+    console.log(`Bot has logged in as ${bot.username}.`);
   });
 
   bot.on('spawn', () => {
@@ -79,8 +78,8 @@ function createBot() {
   });
 
   bot.on('end', () => {
-    console.log('Bot has disconnected. Reconnecting in 30 seconds with a new username...');
-    setTimeout(createBot, 30000); // Reconnect after 30 seconds with a new username
+    console.log(`Bot has disconnected. Reconnecting in 30 seconds with the same username...`);
+    setTimeout(() => createBot(bot.username), 30000); // Reconnect after 30 seconds with the same username
   });
 
   bot.on('health', () => {
@@ -88,7 +87,7 @@ function createBot() {
   });
 }
 
-createBot();
+createBot('BehenKaLoda'); // Start the bot with the specified username
 
 // HTTP server to keep Render happy
 const app = express();
