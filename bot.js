@@ -6,7 +6,7 @@ function createBot(username) {
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
     username: username,               // use the specified username
-    version: '1.16.5',                // specify the Minecraft version
+    version: '1.16.1',                // specify the Minecraft version
     // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
   });
 
@@ -18,45 +18,20 @@ function createBot(username) {
     console.log('Bot has spawned in the world.');
 
     function randomMovement() {
-      const actions = ['jump', 'move', 'look'];
+      const actions = ['jump'];
       const action = actions[Math.floor(Math.random() * actions.length)];
 
       if (action === 'jump') {
         bot.setControlState('jump', true);
         setTimeout(() => bot.setControlState('jump', false), 500);
-      } else if (action === 'move') {
-        const directions = ['forward', 'back', 'left', 'right'];
-        const direction = directions[Math.floor(Math.random() * directions.length)];
-        bot.setControlState(direction, true);
-        setTimeout(() => bot.setControlState(direction, false), 1000);
-      } else if (action === 'look') {
-        const yaw = Math.random() * 2 * Math.PI;
-        const pitch = (Math.random() - 0.5) * Math.PI;
-        bot.look(yaw, pitch, true);
       }
     }
 
-    function interactWithEnvironment() {
-      const block = bot.blockAtCursor(4);
-      if (block) {
-        bot.dig(block);
-      } else {
-        const entity = bot.nearestEntity();
-        if (entity) {
-          bot.attack(entity);
-        }
-      }
-    }
-
-    setInterval(randomMovement, 5000); // Perform a random movement action every 5 seconds
-    setInterval(randomMovement, 10000); // Perform a random movement action every 10 seconds
     setInterval(randomMovement, 15000); // Perform a random movement action every 15 seconds
-    setInterval(interactWithEnvironment, 10000); // Interact with the environment every 10 seconds
   });
 
   bot.on('chat', (username, message) => {
     if (username === bot.username) return;
-    console.log(`<${username}> ${message}`);
     if (message === 'hello') {
       bot.chat(`Hello ${username}, I am a bot!`);
     }
@@ -64,7 +39,6 @@ function createBot(username) {
       const target = message.split(' ')[1];
       if (target) {
         bot.chat(`/ban ${target}`);
-        console.log(`Banned player: ${target}`);
       }
     }
   });
@@ -78,8 +52,8 @@ function createBot(username) {
   });
 
   bot.on('end', () => {
-    console.log(`Bot has disconnected. Reconnecting in 30 seconds with the same username...`);
-    setTimeout(() => createBot(bot.username), 30000); // Reconnect after 30 seconds with the same username
+    console.log(`Bot has disconnected. Reconnecting in 60 seconds with the same username...`);
+    setTimeout(() => createBot(bot.username), 60000); // Reconnect after 60 seconds with the same username
   });
 
   bot.on('health', () => {
