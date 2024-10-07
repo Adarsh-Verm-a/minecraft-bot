@@ -6,7 +6,7 @@ function createBot(username) {
     host: 'MineEarthians.aternos.me', // replace with your Aternos server IP
     port: 32203,                      // replace with your Aternos server port if needed
     username: username,               // use the specified username
-    version: '1.16.1',                // specify the Minecraft version
+    version: '1.17.1',                // specify the Minecraft version
     // password: 'your_minecraft_password', // Uncomment if your bot uses a Minecraft account
   });
 
