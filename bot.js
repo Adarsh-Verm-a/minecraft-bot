@@ -7,10 +7,10 @@ const allowedUsers = ['YourMinecraftUsername']; // Replace with your Minecraft u
 // Bot creation function
 function createBot(username) {
   const bot = mineflayer.createBot({
-    host: 'MineEarthians.aternos.me', // Replace with your Aternos server IP
-    port: 32203,                      // Replace with your Aternos server port
-    username: username,               // Replace with a valid username or bot name
-    version: '1.17.1',                 // Make sure this matches your server version
+    host: 'OBS-AURORA.aternos.me', // Replace with your Aternos server IP
+    port: 56634,                      // Replace with your Aternos server port
+    username: NodejsBot,               // Replace with a valid username or bot name
+    version: '1.21.4',                 // Make sure this matches your server version
     // password: 'your_minecraft_password', // Uncomment if using a Minecraft account
   });
 
